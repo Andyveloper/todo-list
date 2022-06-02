@@ -2,15 +2,12 @@ $primary-color: #f1f1f1;
 $secondary-color: #050505;
 $WHITE: #fff;
 
-
 @mixin transition {
   transition: all 0.3s ease;
-
 }
 
 body {
   background: $primary-color;
   color: $secondary-color;
   font-family: sans-serif;
-
 }

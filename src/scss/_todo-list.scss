@@ -1,4 +1,5 @@
 $GRAY: darkgray;
+
 @mixin border {
   border-bottom: 1.3px solid transparentize($GRAY, 0.85);
 }
@@ -10,10 +11,11 @@ $GRAY: darkgray;
 
 .list-container {
   background-color: $WHITE;
-  box-shadow: 3px 6px 6px transparentize(black, 0.7);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   margin: auto;
   padding: 0;
   width: 50%;
+
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -22,20 +24,22 @@ $GRAY: darkgray;
 li {
   display: flex;
   list-style: none;
+
   @include border;
+
   padding: 1rem;
   margin: 0;
   align-items: center;
+
   .list-item {
     width: 80%;
   }
 }
+
 .list-title {
   border: none;
   margin-right: auto;
 }
-
-
 
 input {
   padding: 1rem;
@@ -44,11 +48,12 @@ input {
   font-style: italic;
   margin-right: auto;
 }
-  
 
 form {
   display: flex;
+
   @include border;
+
   justify-content: flex-end;
   align-items: center;
 }
@@ -72,7 +77,9 @@ form {
 .top-container {
   display: flex;
   align-items: center;
+
   @include border;
+
   justify-content: flex-end;
 }
 
@@ -80,7 +87,9 @@ form {
   display: flex;
   list-style: none;
   font-size: 1.1rem;
+
   @include border;
+
   padding: 0.5rem;
   margin: 0;
   align-items: center;
