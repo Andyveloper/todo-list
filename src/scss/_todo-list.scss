@@ -1,0 +1,100 @@
+$GRAY: darkgray;
+
+@mixin border {
+  border-bottom: 1.3px solid transparentize($GRAY, 0.85);
+}
+
+.body-title {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.list-container {
+  background-color: $WHITE;
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
+  margin: auto;
+  padding: 0;
+  width: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+li {
+  display: flex;
+  list-style: none;
+
+  @include border;
+
+  padding: 1rem;
+  margin: 0;
+  align-items: center;
+
+  .list-item {
+    width: 80%;
+  }
+}
+
+.list-title {
+  border: none;
+  margin-right: auto;
+}
+
+input {
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  font-style: italic;
+  margin-right: auto;
+}
+
+form {
+  display: flex;
+
+  @include border;
+
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.checkbox {
+  padding: 0.3rem;
+  width: 0;
+  height: 0;
+  border: 2px solid $GRAY;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.fa-solid {
+  margin-right: 1rem;
+  color: $GRAY;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+
+  @include border;
+
+  justify-content: flex-end;
+}
+
+.clear-button-container {
+  display: flex;
+  list-style: none;
+  font-size: 1.1rem;
+
+  @include border;
+
+  padding: 0.5rem;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  color: darken($GRAY, 0.8);
+  background-color: transparentize($GRAY, 0.75);
+  cursor: pointer;
+}
