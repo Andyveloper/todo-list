@@ -56,13 +56,17 @@ const sortTasks = () => {
 
 const createList = () => {
   for (let i = 0; i < toDo.length; i++) {
-    const listItem = document.createElement('li');
+    const listItem = document.createElement('div');
     const checkbox = document.createElement('div');
+    const ellipsis = document.createElement('i')
+    ellipsis.classList.add('fa-solid');
+    ellipsis.classList.add('fa-ellipsis-vertical');
     listItem.innerHTML = toDo[i].description;
     listItem.classList.add('list-item');
     listItem.insertAdjacentElement('afterbegin', checkbox);
     checkbox.classList.add('checkbox');
-    listContainer.append(listItem);
+    listItem.appendChild(ellipsis);
+    listContainer.appendChild(listItem);
   }
 };
 

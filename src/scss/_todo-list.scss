@@ -21,6 +21,17 @@ $GRAY: darkgray;
   }
 }
 
+.list-item {
+  display: flex;
+  list-style: none;
+
+  @include border;
+
+  padding: 1rem;
+  margin: 0;
+  align-items: center;
+  width: 92%;
+}
 li {
   display: flex;
   list-style: none;
@@ -30,10 +41,7 @@ li {
   padding: 1rem;
   margin: 0;
   align-items: center;
-
-  .list-item {
-    width: 80%;
-  }
+  width: 80%;
 }
 
 .list-title {
@@ -72,6 +80,13 @@ form {
   color: $GRAY;
   z-index: 99;
   cursor: pointer;
+  padding: 6px;
+}
+
+.fa-ellipsis-vertical {
+  margin-left: auto;
+  margin-right: 0;
+  cursor: move;
 }
 
 .top-container {
