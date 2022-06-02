@@ -5,7 +5,7 @@
 - What's Next? (TO-DO List)
 
 ## Clone the Project
-- `git clone https://github.com/Zeraltz/todo-list.git
+- `git clone https://github.com/Zeraltz/todo-list.git`
 
 ## Built With
 
