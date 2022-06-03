@@ -1,5 +1,5 @@
 import './main.scss';
-import { newTask, removeListElement } from './modules/newTask.js';
+import { newTask, setData, getData, createListElement } from './modules/newTask.js';
 
 
 export const toDo = [
@@ -71,6 +71,14 @@ createForm();
 createUl();
 sortTasks();
 
+const renderList = () => {
+  const loadData = getData();
+  loadData.forEach(data => {
+    createListElement(data)
+  })
+}
+renderList();
+
 const form = document.querySelector('.form')
 
 form.addEventListener('submit', (e) => {
@@ -83,11 +91,11 @@ form.addEventListener('submit', (e) => {
     console.log(toDo)
   }
   sortTasks();
+  setData();
 });
 
 
 
 removeButton();
-
 
 

@@ -37,6 +37,7 @@ export function createListElement(todo) {
       removeListElement(clickedItem);
       overWriteLiId()
       overwriteIndex(toDo);
+      setData();
       console.log(liElement)
     }
   });
@@ -79,11 +80,12 @@ const overWriteLiId = () => {
 
 
 export function setData() {
-  const toDo = JSON.stringify(toDo);
-  localStorage.setItem('toDo', toDo);
+  const storagedData = JSON.stringify(toDo);
+  localStorage.setItem('toDo', storagedData);
 }
 
 export function getData() {
-  const toDo = JSON.parse(localStorage.getItem('toDo'));
-  return toDo;
+  const savedData = JSON.parse(localStorage.getItem('toDo'));
+  return savedData;
 }
+
