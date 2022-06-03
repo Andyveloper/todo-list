@@ -1,4 +1,4 @@
-import { create } from 'lodash';
+import { create, lastIndexOf, over } from 'lodash';
 import { toDo } from '../index.js'
 
 export const newTask = (text) => {
@@ -29,23 +29,50 @@ export function createListElement(todo) {
 `;
   list.append(listItem)
 
+  const liElement = document.getElementsByClassName('.list-items');
   const removeBtn = listItem.querySelector('.delete-todo');
   removeBtn.addEventListener('click', (e) => {
     const clickedItem = e.target.parentElement;
     if (clickedItem.classList.contains('js-delete-todo')) {
       removeListElement(clickedItem);
+      overWriteLiId()
+      overwriteIndex(toDo);
+      console.log(liElement)
     }
   });
 }
 
 export function removeListElement (btn) {
-  const index = Number(btn.parentElement.id);
+  const index = Number(btn.parentElement.id * 1);
+  console.log(index);
   if (btn.parentElement.id){
-    toDo.splice(index - 1, 1); 
-    console.log(toDo);
+    btn.parentElement.remove();
+    toDo.splice(index, 1); 
   }
-  btn.parentElement.remove();
+  if (!btn.parentElement.id){
+    toDo.splice(0, 1);
+  }
+  console.log(toDo);
 }
+
+const overwriteIndex = (todo) => {
+  let index = 1;
+  todo.forEach((todo) => {
+    todo.index = index;
+    index += 1;
+    
+  });
+}
+
+const overWriteLiId = () => {
+  let index = 1;
+  const list = document.querySelector('.list-here');
+  const listItems = list.querySelectorAll('.list-items');
+  listItems.forEach((listItem) => {
+    listItem.setAttribute('id', index);
+    index++;
+  });
+};
 
 
 
