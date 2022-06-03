@@ -1,7 +1,6 @@
 import './main.scss';
-import { setData, getData, renderList } from './modules/localStorage.js';
-import { newTask, createListElement, saveEdit } from './modules/newTask.js';
-
+import { setData, renderList } from './modules/localStorage.js';
+import { newTask, saveEdit } from './modules/newTask.js';
 
 export const toDo = [
 ];
@@ -22,39 +21,38 @@ const createTitle = () => {
 };
 
 const createForm = () => {
-  const listFormContainer = document.createElement('li')
+  const listFormContainer = document.createElement('li');
   const listForm = document.createElement('form');
   const input = document.createElement('input');
-  const btn = document.createElement('button')
+  const btn = document.createElement('button');
   const btnIcon = document.createElement('i');
   listFormContainer.classList.add('form-container');
   listForm.classList.add('form');
-  btn.setAttribute('type', 'submit')
-  btn.setAttribute('title', 'submit-btn')
-  btn.classList.add('submit')
+  btn.setAttribute('type', 'submit');
+  btn.setAttribute('title', 'submit-btn');
+  btn.classList.add('submit');
   btnIcon.classList.add('fa-solid');
   btnIcon.classList.add('fa-arrow-right-to-bracket');
   input.setAttribute('placeholder', 'Add task...');
   input.classList.add('input');
   listFormContainer.appendChild(listForm);
-  btn.appendChild(btnIcon)
+  btn.appendChild(btnIcon);
   listForm.append(input, btn);
   listContainer.appendChild(listFormContainer);
 };
-const createUl = () =>{
+const createUl = () => {
   const listItemContainer = document.createElement('li');
   const listItemSubContainer = document.createElement('ul');
-  listItemSubContainer.classList.add('list-here')
-  listItemContainer.appendChild(listItemSubContainer)
-  listContainer.append(listItemContainer)
-}
+  listItemSubContainer.classList.add('list-here');
+  listItemContainer.appendChild(listItemSubContainer);
+  listContainer.append(listItemContainer);
+};
 
 const sortTasks = () => {
   toDo.sort((a, b) => a.index - b.index);
 };
 
 export const removeButton = () => {
-
   const buttonListContainer = document.createElement('li');
   const buttonContainer = document.createElement('div');
   const removeButton = document.createElement('p');
@@ -66,15 +64,12 @@ export const removeButton = () => {
   listContainer.append(buttonListContainer);
 };
 
-
 createTitle();
 createForm();
 createUl();
 sortTasks();
 
-
-
-const form = document.querySelector('.form')
+const form = document.querySelector('.form');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -82,8 +77,8 @@ form.addEventListener('submit', (e) => {
   if (input.value !== '') {
     newTask(input.value.trim());
     input.value = '';
-    input.focus()
-    console.log(toDo)
+    input.focus();
+    console.log(toDo);
   }
   sortTasks();
   setData();
@@ -91,10 +86,7 @@ form.addEventListener('submit', (e) => {
 
 window.addEventListener('load', () => {
   renderList();
-  
-  });
+});
 saveEdit();
 
 removeButton();
-
-

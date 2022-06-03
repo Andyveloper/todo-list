@@ -16,6 +16,7 @@
     "no-param-reassign": "off",
     "eol-last": "off",
     "no-plusplus": "off",
+    "import/no-cycle": "off",
     "import/extensions": [ 1, {
       "js": "always", "json": "always"
     }]
