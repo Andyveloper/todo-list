@@ -1,6 +1,6 @@
 import './main.scss';
-import { setData, renderList, getData } from './modules/localStorage.js';
-import { newTask } from './modules/newTask.js';
+import { setData, getData, renderList } from './modules/localStorage.js';
+import { newTask, createListElement, saveEdit } from './modules/newTask.js';
 
 
 export const toDo = [
@@ -71,7 +71,8 @@ createTitle();
 createForm();
 createUl();
 sortTasks();
-renderList();
+
+
 
 const form = document.querySelector('.form')
 
@@ -88,7 +89,11 @@ form.addEventListener('submit', (e) => {
   setData();
 });
 
-
+window.addEventListener('load', () => {
+  renderList();
+  
+  });
+saveEdit();
 
 removeButton();
 

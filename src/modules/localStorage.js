@@ -2,8 +2,7 @@ import { toDo } from '../index.js';
 import { createListElement } from '../modules/newTask.js';
 
 export function setData() {
-  const storagedData = JSON.stringify(toDo);
-  localStorage.setItem('toDo', storagedData);
+  localStorage.setItem('toDo', JSON.stringify(toDo));
 }
 
 export function getData() {
@@ -18,3 +17,4 @@ export const renderList = () => {
     createListElement(data)
   })
 }
+

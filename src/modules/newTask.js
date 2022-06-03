@@ -8,7 +8,7 @@ export const newTask = (text) => {
     index: toDo.length + 1,
   }
   toDo.push(todo)
-  createListElement(todo)
+  createListElement(todo);
   
 };
 
@@ -22,13 +22,13 @@ export function createListElement(todo) {
   listItem.innerHTML =`
   <input class="check" id="${todo.index}" type="checkbox"/>
   <label for="${todo.index}" class="tick js-tick"></label>
-  <span>${todo.description}</span>
+  <span contenteditable="true">${todo.description}</span>
   <button class="delete-todo js-delete-todo">
   <i class = "fa-solid fa-trash-can"></i>
   </button>
 `;
   list.append(listItem)
-
+  
   const liElement = document.getElementsByClassName('.list-items');
   const removeBtn = listItem.querySelector('.delete-todo');
   removeBtn.addEventListener('click', (e) => {
@@ -74,5 +74,16 @@ const overWriteLiId = () => {
   listItems.forEach((listItem) => {
     listItem.setAttribute('id', index);
     index++;
+  });
+};
+
+export const saveEdit = () => {
+  const list = document.querySelector('.list-here');
+  const listItems = list.querySelectorAll('.list-items');
+  listItems.forEach((listItem) => {
+    const span = listItem.querySelector('span');
+    span.addEventListener('keydown', () => {
+      setData();
+    });
   });
 };
