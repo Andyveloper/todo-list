@@ -43,14 +43,16 @@ export function createListElement(todo) {
 }
 
 export function removeListElement (btn) {
-  const index = Number(btn.parentElement.id * 1);
+  let index = Number(btn.parentElement.id > 1);
   console.log(index);
   if (btn.parentElement.id){
     btn.parentElement.remove();
     toDo.splice(index, 1); 
   }
-  if (!btn.parentElement.id){
-    toDo.splice(0, 1);
+  else {
+    index = Number(btn.parentElement.id - 1)
+    btn.parentElement.remove();
+    toDo.splice(index, 1);
   }
   console.log(toDo);
 }
