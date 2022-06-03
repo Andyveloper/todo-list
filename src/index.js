@@ -1,5 +1,6 @@
 import './main.scss';
-import { newTask, setData, getData, createListElement } from './modules/newTask.js';
+import { setData, renderList, getData } from './modules/localStorage.js';
+import { newTask } from './modules/newTask.js';
 
 
 export const toDo = [
@@ -70,13 +71,6 @@ createTitle();
 createForm();
 createUl();
 sortTasks();
-
-const renderList = () => {
-  const loadData = getData();
-  loadData.forEach(data => {
-    createListElement(data)
-  })
-}
 renderList();
 
 const form = document.querySelector('.form')

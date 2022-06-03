@@ -1,4 +1,4 @@
-import { create, lastIndexOf, over } from 'lodash';
+import {setData, getData} from './localStorage.js';
 import { toDo } from '../index.js'
 
 export const newTask = (text) => {
@@ -76,16 +76,3 @@ const overWriteLiId = () => {
     index++;
   });
 };
-
-
-
-export function setData() {
-  const storagedData = JSON.stringify(toDo);
-  localStorage.setItem('toDo', storagedData);
-}
-
-export function getData() {
-  const savedData = JSON.parse(localStorage.getItem('toDo'));
-  return savedData;
-}
-
