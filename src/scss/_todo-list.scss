@@ -30,8 +30,6 @@ $GRAY: darkgray;
   margin: 0;
   align-items: center;
   justify-content: flex-start;
-  align-items: center;
-
 }
 
 li {
@@ -41,7 +39,6 @@ li {
 .list-title {
   border: none;
   margin-right: auto;
-  
 }
 
 input {
@@ -66,7 +63,6 @@ form {
   z-index: 99;
   cursor: pointer;
   padding: 6px;
-  
 }
 
 .delete-todo {
@@ -91,6 +87,7 @@ form {
   align-items: center;
   padding: 1rem;
   justify-content: flex-end;
+
   @include border;
 }
 
@@ -126,6 +123,5 @@ form {
     height: 1rem;
     padding: 1rem;
     margin: 6px;
-    
   }
 }
