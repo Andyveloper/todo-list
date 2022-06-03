@@ -83,16 +83,9 @@ form.addEventListener('submit', (e) => {
     console.log(toDo)
   }
   sortTasks();
-
-  const removeBtn = document.querySelector('.delete-todo');
-  removeBtn.addEventListener('click', (e) => {
-    const clickeditem = e.target;
-    if (clickeditem.classList.contains('fa-trash-can')) {
-      console.log(toDo)
-      removeListElement(toDo);
-    }
-  });
 });
+
+
 
 removeButton();
 

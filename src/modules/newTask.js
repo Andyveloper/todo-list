@@ -9,6 +9,7 @@ export const newTask = (text) => {
   }
   toDo.push(todo)
   createListElement(todo)
+  
 };
 
 export function createListElement(todo) {
@@ -17,7 +18,7 @@ export function createListElement(todo) {
   const listItem = document.createElement('li');
   listItem.setAttribute('class', `list-item${isCompleted}`);
   listItem.classList.add('list-items');
-  listItem.setAttribute('data-key', todo.index);
+  listItem.setAttribute('id', todo.index);
   listItem.innerHTML =`
   <input class="check" id="${todo.index}" type="checkbox"/>
   <label for="${todo.index}" class="tick js-tick"></label>
@@ -28,23 +29,32 @@ export function createListElement(todo) {
 `;
   list.append(listItem)
 
+  const removeBtn = listItem.querySelector('.delete-todo');
+  removeBtn.addEventListener('click', (e) => {
+    const clickedItem = e.target.parentElement;
+    if (clickedItem.classList.contains('js-delete-todo')) {
+      removeListElement(clickedItem);
+    }
+  });
 }
 
-export function removeListElement (todo) {
-  const item = document.querySelector(`[data-key='${todo.index}']`);
-  // console.log(item);
-  for (let i = 0; i < toDo.length; i++) {
-    if (todo.index === toDo[i + 1]) {
-      toDo.splice(i, 1);
-    }
-    if (todo.index === toDo[i + 1]) {
-      // item.remove();
-    }
+export function removeListElement (btn) {
+  const index = Number(btn.parentElement.id);
+  if (btn.parentElement.id){
+    toDo.splice(index - 1, 1); 
+    console.log(toDo);
   }
+  btn.parentElement.remove();
 }
 
 
-export function localStorage() {
+
+export function setData() {
   const toDo = JSON.stringify(toDo);
   localStorage.setItem('toDo', toDo);
+}
+
+export function getData() {
+  const toDo = JSON.parse(localStorage.getItem('toDo'));
+  return toDo;
 }
