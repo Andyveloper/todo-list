@@ -18,6 +18,6 @@ console.log('hello world');
 
 
 export const completed = (todo) => {
-  const completedTasks = todo.filter(task => task.completed === true);
-  // todo.completedTasks.remove();
+  const completedTasks = todo.filter(task => task.completed === false);
+  localStorage.setItem('toDo', JSON.stringify(completedTasks));
 }

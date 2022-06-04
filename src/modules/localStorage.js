@@ -5,8 +5,11 @@ export function setData() {
 }
 
 export function getData() {
-   const savedData = JSON.parse(localStorage.getItem('toDo'));
-  return savedData;
+    const savedData = JSON.parse(localStorage.getItem('toDo'));
+    if (savedData) {
+    return savedData;
+  }
+  return [];
 }
 
 export const renderList = () => {
@@ -14,9 +17,4 @@ export const renderList = () => {
   loadData.forEach((data) => {
     createListElement(data);
   });
-}
-
-export function saveEdit(todo, listItem) {
-  let spanInner = listItem.querySelector(`#editable${todo.index}`)
-
 }

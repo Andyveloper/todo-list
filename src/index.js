@@ -1,9 +1,9 @@
 import './main.scss';
 import { setData, renderList } from './modules/localStorage.js';
-import { newTask } from './modules/newTask.js';
+import { newTask, removeCompleted } from './modules/newTask.js';
 import { completed, markAsCompleted } from './modules/completeStatus.js';
 
-export const toDo = JSON.parse(localStorage.getItem('toDo') || '[]');;
+export const toDo = JSON.parse(localStorage.getItem('updatedTask')) || JSON.parse(localStorage.getItem('toDo') || '[]');
 
 const listContainer = document.querySelector('.list-container');
 
@@ -64,6 +64,15 @@ export const removeButton = () => {
   buttonContainer.append(removeButton);
   buttonListContainer.append(buttonContainer);
   listContainer.append(buttonListContainer);
+  buttonContainer.addEventListener('click', () => {
+    if (toDo.completed) {
+      overWriteLiId();
+      overwriteIndex(toDo);
+      removeCompleted();
+      setData();
+    }
+    completed(toDo);
+  });
 };
 
 createTitle();
@@ -83,7 +92,6 @@ form.addEventListener('submit', (e) => {
     console.log(toDo);
   }
   sortTasks();
-  completed(toDo);
   setData();
 });
 

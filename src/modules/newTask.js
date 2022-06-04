@@ -80,6 +80,17 @@ export function createListElement(todo) {
   });
 }
 
+export const removeCompleted = () => {
+  const list = document.querySelector('.list-here');
+  const listItems = list.querySelectorAll('.list-items');
+  listItems.forEach((listItem) => {
+    if (listItem.classList.contains('done')) {
+      listItem.remove();
+    }
+  });
+  console.log((toDo));
+  setData();
+}
 
 
 
