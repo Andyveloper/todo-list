@@ -1,6 +1,6 @@
 import './main.scss';
 import { setData, renderList, getData } from './modules/localStorage.js';
-import { newTask, removeCompleted, overWriteLiId, overwriteIndex } from './modules/newTask.js';
+import { newTask, removeCompleted } from './modules/newTask.js';
 import { completed } from './modules/completeStatus.js';
 
 export let toDo = JSON.parse(localStorage.getItem('toDo') || '[]');
@@ -63,11 +63,10 @@ export const removeButton = () => {
   buttonListContainer.append(buttonContainer);
   listContainer.append(buttonListContainer);
   buttonContainer.addEventListener('click', () => {
-
-      removeCompleted();
-      completed(toDo);
-      toDo = getData(); 
-      console.log('this is', toDo);
+    removeCompleted();
+    completed(toDo);
+    toDo = getData();
+    console.log('this is', toDo);
   });
 };
 

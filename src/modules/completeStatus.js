@@ -22,5 +22,5 @@ export const completed = (todo) => {
   overwriteIndex(completedTasks);
   overWriteLiId();
   localStorage.setItem('toDo', JSON.stringify(completedTasks));
-  console.log(toDo)
+  console.log(toDo);
 };
