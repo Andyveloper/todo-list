@@ -1,7 +1,7 @@
 import './main.scss';
 import { setData, renderList } from './modules/localStorage.js';
 import { newTask, removeCompleted } from './modules/newTask.js';
-import { completed, markAsCompleted } from './modules/completeStatus.js';
+import { completed } from './modules/completeStatus.js';
 
 export const toDo = JSON.parse(localStorage.getItem('updatedTask')) || JSON.parse(localStorage.getItem('toDo') || '[]');
 
@@ -39,7 +39,6 @@ const createForm = () => {
   btn.appendChild(btnIcon);
   listForm.append(input, btn);
   listContainer.appendChild(listFormContainer);
-  
 };
 const createUl = () => {
   const listItemContainer = document.createElement('li');
@@ -47,7 +46,6 @@ const createUl = () => {
   listItemSubContainer.classList.add('list-here');
   listItemContainer.appendChild(listItemSubContainer);
   listContainer.append(listItemContainer);
-  
 };
 
 const sortTasks = () => {
@@ -66,8 +64,6 @@ export const removeButton = () => {
   listContainer.append(buttonListContainer);
   buttonContainer.addEventListener('click', () => {
     if (toDo.completed) {
-      overWriteLiId();
-      overwriteIndex(toDo);
       removeCompleted();
       setData();
     }

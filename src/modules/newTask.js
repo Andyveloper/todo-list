@@ -1,6 +1,6 @@
-import { setData, saveEdit } from './localStorage.js';
+import { setData } from './localStorage.js';
 import { toDo } from '../index.js';
-import { completed, markAsCompleted } from './completeStatus.js';
+import { markAsCompleted } from './completeStatus.js';
 
 const overwriteIndex = (todo) => {
   let index = 1;
@@ -54,7 +54,7 @@ export function createListElement(todo) {
   const editable = document.getElementById(`editable${todo.index}`);
   editable.setAttribute('contenteditable', 'true');
 
-  const liElement = document.getElementsByClassName('.list-items');
+  // const liElement = document.getElementsByClassName('.list-items');
   const removeBtn = listItem.querySelector('.delete-todo');
   removeBtn.addEventListener('click', (e) => {
     const clickedItem = e.target.parentElement;
@@ -63,7 +63,6 @@ export function createListElement(todo) {
       overWriteLiId();
       overwriteIndex(toDo);
       setData();
-      
     }
   });
 
@@ -72,7 +71,7 @@ export function createListElement(todo) {
     markAsCompleted(toDo, listItem);
     setData();
   });
-  
+
   const editSpan = listItem.querySelector(`#editable${todo.index}`);
   editSpan.addEventListener('keyup', () => {
     toDo[todo.index - 1].description = editSpan.textContent;
@@ -90,12 +89,7 @@ export const removeCompleted = () => {
   });
   console.log((toDo));
   setData();
-}
-
-
-
-
-
+};
 
 export const newTask = (text) => {
   const todo = {
