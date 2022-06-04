@@ -12,10 +12,12 @@
   "extends": ["airbnb-base"],
   "rules": {
     "no-unused-expressions": "off",
+    "import/no-mutable-exports": "off",
     "no-shadow": "off",
     "no-param-reassign": "off",
     "eol-last": "off",
     "no-plusplus": "off",
+    "import/no-cycle": "off",
     "import/extensions": [ 1, {
       "js": "always", "json": "always"
     }]

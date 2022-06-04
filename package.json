@@ -15,9 +15,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Zeraltz/Webpack-setup/issues"
-  },
+  "bugs": {},
   "homepage": "https://github.com/Zeraltz/Webpack-setup#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",

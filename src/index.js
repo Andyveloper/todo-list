@@ -1,33 +1,16 @@
 import './main.scss';
+import { setData, renderList, getData } from './modules/localStorage.js';
+import { newTask, removeCompleted } from './modules/newTask.js';
+import { completed } from './modules/completeStatus.js';
 
-const toDo = [
-  {
-    description: 'Learn JavaScript',
-    completed: false,
-    index: 3,
-  },
-  {
-    description: 'Learn how to use lodash',
-    docompleted: false,
-    index: 2,
-  },
-  {
-    description: 'Learn how to use webpack',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Learn how to cook',
-    completed: false,
-    index: 4,
-  },
-];
+export let toDo = JSON.parse(localStorage.getItem('toDo') || '[]');
+
 const listContainer = document.querySelector('.list-container');
 
 const createTitle = () => {
-  const listTitle = document.createElement('li');
+  const listTitle = document.createElement('div');
   const listIcon = document.createElement('i');
-  const topContainer = document.createElement('div');
+  const topContainer = document.createElement('li');
   topContainer.classList.add('top-container');
   listIcon.classList.add('fa-solid');
   listIcon.classList.add('fa-arrows-rotate');
@@ -38,46 +21,77 @@ const createTitle = () => {
 };
 
 const createForm = () => {
+  const listFormContainer = document.createElement('li');
   const listForm = document.createElement('form');
   const input = document.createElement('input');
-  const btn = document.createElement('i');
+  const btn = document.createElement('button');
+  const btnIcon = document.createElement('i');
+  listFormContainer.classList.add('form-container');
   listForm.classList.add('form');
-  btn.classList.add('fa-solid');
-  btn.classList.add('fa-arrow-right-to-bracket');
+  btn.setAttribute('type', 'submit');
+  btn.setAttribute('title', 'submit-btn');
+  btn.classList.add('submit');
+  btnIcon.classList.add('fa-solid');
+  btnIcon.classList.add('fa-arrow-right-to-bracket');
   input.setAttribute('placeholder', 'Add task...');
   input.classList.add('input');
+  listFormContainer.appendChild(listForm);
+  btn.appendChild(btnIcon);
   listForm.append(input, btn);
-  listContainer.appendChild(listForm);
+  listContainer.appendChild(listFormContainer);
+};
+const createUl = () => {
+  const listItemContainer = document.createElement('li');
+  const listItemSubContainer = document.createElement('ul');
+  listItemSubContainer.classList.add('list-here');
+  listItemContainer.appendChild(listItemSubContainer);
+  listContainer.append(listItemContainer);
 };
 
 const sortTasks = () => {
   toDo.sort((a, b) => a.index - b.index);
 };
 
-const createList = () => {
-  for (let i = 0; i < toDo.length; i++) {
-    const listItem = document.createElement('li');
-    const checkbox = document.createElement('div');
-    listItem.innerHTML = toDo[i].description;
-    listItem.classList.add('list-item');
-    listItem.insertAdjacentElement('afterbegin', checkbox);
-    checkbox.classList.add('checkbox');
-    listContainer.append(listItem);
-  }
-};
-
-const removeButton = () => {
+export const removeButton = () => {
+  const buttonListContainer = document.createElement('li');
   const buttonContainer = document.createElement('div');
   const removeButton = document.createElement('p');
   buttonContainer.classList.add('clear-button-container');
   removeButton.innerHTML = 'Remove Completed Tasks';
   removeButton.classList.add('clear-button');
   buttonContainer.append(removeButton);
-  listContainer.append(buttonContainer);
+  buttonListContainer.append(buttonContainer);
+  listContainer.append(buttonListContainer);
+  buttonContainer.addEventListener('click', () => {
+    removeCompleted();
+    completed(toDo);
+    toDo = getData();
+    console.log('this is', toDo);
+  });
 };
 
 createTitle();
 createForm();
+createUl();
 sortTasks();
-createList();
+
+const form = document.querySelector('.form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const input = document.querySelector('.input');
+  if (input.value !== '') {
+    newTask(input.value.trim());
+    input.value = '';
+    input.focus();
+    console.log(toDo);
+  }
+  sortTasks();
+  setData();
+});
+
+window.addEventListener('load', () => {
+  renderList();
+});
+
 removeButton();

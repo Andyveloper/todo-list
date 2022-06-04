@@ -14,26 +14,26 @@ $GRAY: darkgray;
   box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.3);
   margin: auto;
   padding: 0;
-  width: 50%;
+  width: 70%;
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 90%;
   }
 }
 
-li {
+.list-items {
   display: flex;
-  list-style: none;
 
   @include border;
 
   padding: 1rem;
   margin: 0;
   align-items: center;
+  justify-content: flex-start;
+}
 
-  .list-item {
-    width: 80%;
-  }
+li {
+  list-style: none;
 }
 
 .list-title {
@@ -58,29 +58,37 @@ form {
   align-items: center;
 }
 
-.checkbox {
-  padding: 0.3rem;
-  width: 0;
-  height: 0;
-  border: 2px solid $GRAY;
-  margin-right: 6px;
-  cursor: pointer;
-}
-
 .fa-solid {
-  margin-right: 1rem;
   color: $GRAY;
   z-index: 99;
   cursor: pointer;
+  padding: 6px;
+}
+
+.delete-todo {
+  border: none;
+  background-color: transparent;
+  margin-left: auto;
+  padding: 0;
+}
+
+.fa-trash-can {
+  margin-left: auto;
+  cursor: pointer;
+  width: 12px;
+}
+
+.fa-arrow-right-to-bracket {
+  margin-right: 1rem;
 }
 
 .top-container {
   display: flex;
   align-items: center;
+  padding: 1rem;
+  justify-content: flex-end;
 
   @include border;
-
-  justify-content: flex-end;
 }
 
 .clear-button-container {
@@ -97,4 +105,28 @@ form {
   color: darken($GRAY, 0.8);
   background-color: transparentize($GRAY, 0.75);
   cursor: pointer;
+}
+
+.submit {
+  border: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.list-here {
+  padding: 0;
+  width: 100%;
+
+  .check {
+    width: 1rem;
+    height: 1rem;
+    padding: 1rem;
+    margin: 6px;
+  }
+}
+
+.done {
+  text-decoration: line-through;
+  color: darken($GRAY, 0.8);
 }
