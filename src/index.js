@@ -1,9 +1,9 @@
 import './main.scss';
-import { setData, renderList, getData } from './modules/localStorage.js';
+import { setData, renderList } from './modules/localStorage.js';
 import { newTask, removeCompleted } from './modules/newTask.js';
 import { completed } from './modules/completeStatus.js';
 
-export let toDo = JSON.parse(localStorage.getItem('toDo') || '[]');
+export const toDo = JSON.parse(localStorage.getItem('toDo') || '[]');
 
 const listContainer = document.querySelector('.list-container');
 
@@ -65,7 +65,7 @@ export const removeButton = () => {
   buttonContainer.addEventListener('click', () => {
     removeCompleted();
     completed(toDo);
-    toDo = getData();
+    window.location.reload();
   });
 };
 
