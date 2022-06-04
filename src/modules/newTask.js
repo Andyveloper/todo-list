@@ -2,7 +2,7 @@ import { setData } from './localStorage.js';
 import { toDo } from '../index.js';
 import { markAsCompleted } from './completeStatus.js';
 
-const overwriteIndex = (todo) => {
+export const overwriteIndex = (todo) => {
   let index = 1;
   todo.forEach((todo) => {
     todo.index = index;
@@ -10,7 +10,7 @@ const overwriteIndex = (todo) => {
   });
 };
 
-const overWriteLiId = () => {
+export const overWriteLiId = () => {
   let index = 1;
   const list = document.querySelector('.list-here');
   const listItems = list.querySelectorAll('.list-items');
@@ -87,7 +87,6 @@ export const removeCompleted = () => {
       listItem.remove();
     }
   });
-  console.log((toDo));
   setData();
 };
 
