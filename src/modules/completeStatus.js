@@ -1,10 +1,7 @@
-// import { toDo } from '../index.js';
-import { toDo } from '../index.js';
 import { setData } from './localStorage.js';
 import { overwriteIndex, overWriteLiId } from './newTask.js';
 
 export const markAsCompleted = (todo, listItem) => {
-  console.log('hello world');
   listItem.classList.toggle('done');
   for (let i = 0; i < todo.length; i++) {
     if (todo[i].index === Number(listItem.id)) {
@@ -22,5 +19,4 @@ export const completed = (todo) => {
   overwriteIndex(completedTasks);
   overWriteLiId();
   localStorage.setItem('toDo', JSON.stringify(completedTasks));
-  console.log(toDo);
 };

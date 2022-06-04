@@ -22,7 +22,6 @@ export const overWriteLiId = () => {
 
 export function removeListElement(btn) {
   let index = Number(btn.parentElement.id > 1);
-  console.log(index);
   if (btn.parentElement.id) {
     btn.parentElement.remove();
     toDo.splice(index, 1);
@@ -31,7 +30,6 @@ export function removeListElement(btn) {
     btn.parentElement.remove();
     toDo.splice(index, 1);
   }
-  console.log(toDo);
 }
 
 export function createListElement(todo) {
