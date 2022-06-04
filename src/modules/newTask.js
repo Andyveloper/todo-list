@@ -1,4 +1,4 @@
-import { setData } from './localStorage.js';
+import { setData, saveEdit } from './localStorage.js';
 import { toDo } from '../index.js';
 import { completed, markAsCompleted } from './completeStatus.js';
 
@@ -42,14 +42,17 @@ export function createListElement(todo) {
   listItem.classList.add('list-items');
   listItem.setAttribute('id', todo.index);
   listItem.innerHTML = `
-  <input class="check" id="${todo.index}" type="checkbox"/>
+  <input class="check check${todo.index}" id="${todo.index}" type="checkbox"/>
   <label for="${todo.index}" class="tick js-tick"></label>
-  <span contenteditable="true">${todo.description}</span>
+  <span id="editable${todo.index}">${todo.description}</span>
   <button class="delete-todo js-delete-todo">
   <i class = "fa-solid fa-trash-can"></i>
   </button>
 `;
   list.append(listItem);
+
+  const editable = document.getElementById(`editable${todo.index}`);
+  editable.setAttribute('contenteditable', 'true');
 
   const liElement = document.getElementsByClassName('.list-items');
   const removeBtn = listItem.querySelector('.delete-todo');
@@ -66,21 +69,22 @@ export function createListElement(todo) {
 
   const checkbox = listItem.querySelector('.check');
   checkbox.addEventListener('change', () => {
-    markAsCompleted(toDo, listItem, listItem.id);
+    markAsCompleted(toDo, listItem);
+    setData();
+  });
+  
+  const editSpan = listItem.querySelector(`#editable${todo.index}`);
+  editSpan.addEventListener('keyup', () => {
+    toDo[todo.index - 1].description = editSpan.textContent;
+    setData();
   });
 }
 
 
-export const saveEdit = () => {
-  const list = document.querySelector('.list-here');
-  const listItems = list.querySelectorAll('.list-items');
-  listItems.forEach((listItem) => {
-    const span = listItem.querySelector('span');
-    span.addEventListener('keydown', () => {
-      setData();
-    });
-  });
-};
+
+
+
+
 
 export const newTask = (text) => {
   const todo = {

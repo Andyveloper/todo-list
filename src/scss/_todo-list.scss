@@ -125,3 +125,8 @@ form {
     margin: 6px;
   }
 }
+
+.done {
+  text-decoration: line-through;
+  color: darken($GRAY, 0.8);
+}

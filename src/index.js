@@ -1,10 +1,9 @@
 import './main.scss';
 import { setData, renderList } from './modules/localStorage.js';
-import { newTask, saveEdit } from './modules/newTask.js';
+import { newTask } from './modules/newTask.js';
 import { completed, markAsCompleted } from './modules/completeStatus.js';
 
-export const toDo = [
-];
+export const toDo = JSON.parse(localStorage.getItem('toDo') || '[]');;
 
 const listContainer = document.querySelector('.list-container');
 
@@ -40,6 +39,7 @@ const createForm = () => {
   btn.appendChild(btnIcon);
   listForm.append(input, btn);
   listContainer.appendChild(listFormContainer);
+  
 };
 const createUl = () => {
   const listItemContainer = document.createElement('li');
@@ -47,6 +47,7 @@ const createUl = () => {
   listItemSubContainer.classList.add('list-here');
   listItemContainer.appendChild(listItemSubContainer);
   listContainer.append(listItemContainer);
+  
 };
 
 const sortTasks = () => {
@@ -82,13 +83,12 @@ form.addEventListener('submit', (e) => {
     console.log(toDo);
   }
   sortTasks();
-  setData();
   completed(toDo);
+  setData();
 });
 
 window.addEventListener('load', () => {
   renderList();
 });
-saveEdit();
 
 removeButton();
