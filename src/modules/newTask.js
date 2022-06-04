@@ -1,5 +1,6 @@
 import { setData } from './localStorage.js';
 import { toDo } from '../index.js';
+import { completed, markAsCompleted } from './completeStatus.js';
 
 const overwriteIndex = (todo) => {
   let index = 1;
@@ -59,10 +60,16 @@ export function createListElement(todo) {
       overWriteLiId();
       overwriteIndex(toDo);
       setData();
-      console.log(liElement);
+      
     }
   });
+
+  const checkbox = listItem.querySelector('.check');
+  checkbox.addEventListener('change', () => {
+    markAsCompleted(toDo, listItem, listItem.id);
+  });
 }
+
 
 export const saveEdit = () => {
   const list = document.querySelector('.list-here');

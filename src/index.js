@@ -1,6 +1,7 @@
 import './main.scss';
 import { setData, renderList } from './modules/localStorage.js';
 import { newTask, saveEdit } from './modules/newTask.js';
+import { completed, markAsCompleted } from './modules/completeStatus.js';
 
 export const toDo = [
 ];
@@ -82,6 +83,7 @@ form.addEventListener('submit', (e) => {
   }
   sortTasks();
   setData();
+  completed(toDo);
 });
 
 window.addEventListener('load', () => {
