@@ -66,7 +66,6 @@ export const removeButton = () => {
     removeCompleted();
     completed(toDo);
     toDo = getData();
-    console.log('this is', toDo);
   });
 };
 
@@ -84,7 +83,6 @@ form.addEventListener('submit', (e) => {
     newTask(input.value.trim());
     input.value = '';
     input.focus();
-    console.log(toDo);
   }
   sortTasks();
   setData();
